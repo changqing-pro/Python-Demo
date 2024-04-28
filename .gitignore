@@ -1,0 +1,7 @@
+lib/*
+bin/*
+.idea/*
+venv
+log.txt
+*.pyc
+*.mp3
