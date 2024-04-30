@@ -1,7 +1,6 @@
 import requests
 import json
 import time
-from translate import Translator
 from googletrans import Translator
 
 
