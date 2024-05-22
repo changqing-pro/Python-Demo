@@ -1,8 +1,7 @@
 import requests
 import json
 import time
-from googletrans import Translator
-
+from translate import Translator
 
 def fetch_trending_repos():
     url = "https://api.gitterapp.com/"
@@ -13,7 +12,7 @@ def fetch_trending_repos():
 
 def save_as_markdown(repos):
     today = time.strftime("%Y-%m-%d",time.localtime(time.time()))
-    translator = Translator()
+    translator = Translator(to_lang='zh')
 
     with open('trending.md', 'w+', encoding='utf-8') as f:
         f.write("*********{}*********\n".format(today))
@@ -24,7 +23,7 @@ def save_as_markdown(repos):
             url = 'https://github.com/' + name
             stars = '![GitHub Repo stars](https://badgen.net/github/stars/' + name + ')'
             description = repo['description'] or 'No Description'
-            translated_description = translator.translate(description, dest='zh-cn').text
+            translated_description = translator.translate(description)
             f.write(f"|[{name}]({url})|{stars}|{translated_description}|-|\n")
         f.write("*********{}*********\n".format(today))
 
