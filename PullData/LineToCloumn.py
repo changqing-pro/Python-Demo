@@ -4,7 +4,7 @@ import pandas as pd
 
 
 # 或者从Excel文件中读取数据
-df = pd.read_excel('/Users/songzonglin/Downloads/FA/数据/0520 NIKE数据.xlsx')
+df = pd.read_excel('/Users/songzonglin/Downloads/FA/数据/无标题.xlsx')
 
 # 将'time'字段的数据类型转为datetime
 df['time'] = pd.to_datetime(df['time'])

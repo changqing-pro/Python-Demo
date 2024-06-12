@@ -27,11 +27,11 @@ def add_prefix(prefix, data):
     return prefix + ": " + data.replace('\r\n', '\n')
 
 # 使用pandas读取Excel文件
-df = pd.read_excel('e://历史聊天记录.xlsx', engine='openpyxl')
+df = pd.read_excel('/Users/songzonglin/Downloads/FA/数据/无标题.xlsx', engine='openpyxl')
 
 # 针对'HistoryContents', 'UserQuestion', 'reply'这三列使用对应的处理方式
-df['HistoryContents'] = df['HistoryContents'].apply(convert_to_qa)
-df['UserQuestion'] = df['UserQuestion'].apply(lambda x: add_prefix("A", x))
+df['HistoryContents'] = df['question'].apply(convert_to_qa)
+df['UserQuestion'] = df['reply'].apply(lambda x: add_prefix("A", x))
 df['reply'] = df['reply'].apply(lambda x: add_prefix("Q", x))
 
 # 拼接'HistoryContents', 'UserQuestion', 'reply'这三列
